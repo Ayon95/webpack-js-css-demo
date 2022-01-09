@@ -10,11 +10,7 @@ module.exports = merge(commonConfig, {
       // static files from this directory will be served
       directory: path.join(__dirname, "public"),
     },
-    // the served content will be gzip-compressed
-    compress: true,
-    // enable Hot Module Replacement (Hot reloading)
-    hot: true,
     // the port on which the server will be listening
-    port: 3000,
+    port: 9000,
   },
 });

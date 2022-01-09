@@ -25,7 +25,11 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({ title: "My App" }),
+    // creates an index.html file in the output directory and injects the bundle script into it (in the head of the html document)
+    new HtmlWebpackPlugin({
+      // the html template from the specified file will be used in the generated html file
+      template: path.resolve(__dirname, "./public/index.html"),
+    }),
     new BundleAnalyzerPlugin(),
   ],
 };
