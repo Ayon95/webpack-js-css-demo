@@ -12,6 +12,9 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     // the dist folder will be cleaned before each build which will ensure that only the generated files are being used
     clean: true,
+    // file name for loaded asset files
+    // http://localhost:9000/cheetah.jpg
+    assetModuleFilename: "[name][ext]",
   },
   module: {
     rules: [
@@ -22,11 +25,19 @@ module.exports = {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
+
+      {
+        // the asset resource module will allow us to import images (their URLs) into JS files and use them
+        test: /\.(png|jpg|jpeg|svg)$/i,
+        type: "asset/resource",
+      },
     ],
   },
   plugins: [
     // creates an index.html file in the output directory and injects the bundle script into it (in the head of the html document)
     new HtmlWebpackPlugin({
+      // the title of the index.html page
+      title: "Webpack demo",
       // the html template from the specified file will be used in the generated html file
       template: path.resolve(__dirname, "./public/index.html"),
     }),

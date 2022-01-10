@@ -5,11 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Html Webpack plugin will insert a script tag with a reference to the bundle JS file -->
-    <title>Webpack demo</title>
+    <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
-    <h1>Generate random ID</h1>
+    <h1><%= htmlWebpackPlugin.options.title %></h1>
     <p class="random-id">Click the button below to generate a random ID.</p>
     <button class="btn">Generate ID</button>
+    <div class="big-cats">
+      <img
+        src="<%= require('../src/assets/images/cheetah.jpg') %>"
+        alt="A cheetah"
+      />
+      <img
+        src="<%= require('../src/assets/images/jaguar.jpg') %>"
+        alt="A jaguar resting on a rock"
+      />
+      <img
+        src="<%= require('../src/assets/images/lion.jpg') %>"
+        alt="A male lion and a cub"
+      />
+    </div>
   </body>
 </html>
