@@ -31,6 +31,32 @@ module.exports = {
         test: /\.(png|jpg|jpeg|svg)$/i,
         type: "asset/resource",
       },
+
+      {
+        // the babel loader uses Babel to transpile JavaScript files
+        // node_modules folder will be excluded
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              // useBuiltIns: 'entry' replaces imports of core-js to import the required polyfills for all the target browsers
+              // useBuiltIns: 'usage' will look at each JS file, and add imports of the required polyfills if the file uses any modern features
+              // core-js version ^3.20.2 is being used
+              // a default set of browsers will be targeted
+              [
+                "@babel/preset-env",
+                {
+                  useBuiltIns: "usage",
+                  corejs: "3.20",
+                  targets: "defaults",
+                },
+              ],
+            ],
+          },
+        },
+      },
     ],
   },
   plugins: [
