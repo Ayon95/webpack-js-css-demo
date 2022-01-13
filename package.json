@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "webpack serve --open --config ./webpack.dev.js --env env=dev",
     "build": "webpack --config ./webpack.prod.js --env env=prod",
+    "stats": "set ANALYZER_MODE=server&& webpack --config ./webpack.common.js --profile --json build-stats.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

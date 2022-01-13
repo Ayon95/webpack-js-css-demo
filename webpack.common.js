@@ -67,6 +67,8 @@ module.exports = {
       // the html template from the specified file will be used in the generated html file
       template: path.resolve(__dirname, "./public/index.html"),
     }),
-    new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin({
+      analyzerMode: process.env.ANALYZER_MODE || "disabled",
+    }),
   ],
 };
